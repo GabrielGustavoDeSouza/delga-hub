@@ -76,9 +76,7 @@ section[data-testid="stSidebar"]{{display:none!important;}}
   transition:transform .16s ease, filter .16s ease, border-color .16s ease;}}
 .card:hover .card-inner{{transform:translateY(-4px);filter:brightness(1.18);
   border-color:rgba(140,165,255,.6);}}
-.card-inner.destaque{{background:linear-gradient(145deg,{BLUE} 0%,{BLUE2} 100%);
-  border-color:rgba(255,255,255,.22);
-  box-shadow:0 14px 34px rgba(20,40,255,.35);}}
+.card-inner.destaque{{border-color:rgba(140,165,255,.5);}}
 .card.disabled .card-inner{{opacity:.62;}}
 .card-icon{{font-size:26px;}}
 .card-name{{color:white;font-size:13.5px;font-weight:700;line-height:1.25;}}
@@ -91,12 +89,10 @@ section[data-testid="stSidebar"]{{display:none!important;}}
 .mini-btns{{display:flex;gap:6px;margin-top:2px;width:100%;}}
 .mini-btn{{flex:1;text-align:center;font-size:9.5px;font-weight:600;
   padding:6px 4px;border-radius:7px;text-decoration:none!important;
-  background:rgba(255,255,255,.16);color:rgba(255,255,255,.92);
+  background:rgba(90,120,255,.22);color:rgba(255,255,255,.92);
   transition:background .15s;}}
-.mini-btn:hover{{background:rgba(255,255,255,.28);}}
+.mini-btn:hover{{background:rgba(90,120,255,.40);}}
 .mini-btn.disabled{{opacity:.6;cursor:default;}}
-.card-inner:not(.destaque) .mini-btn{{background:rgba(90,120,255,.22);}}
-.card-inner:not(.destaque) .mini-btn:hover{{background:rgba(90,120,255,.40);}}
 
 .hub-foot{{text-align:center;color:rgba(255,255,255,.28);font-size:9.5px;
   margin-top:22px;letter-spacing:.3px;}}
@@ -150,5 +146,5 @@ st.markdown(
 cards_html = "".join(_card_html(item) for item in TODOS)
 st.markdown(f'<div class="grid">{cards_html}</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="hub-foot">Grupo Delga Ind. e Com. · Desenvolvido por Gabriel Souza</div>',
+st.markdown('<div class="hub-foot">Grupo Delga Ind. e Com. · Desenvolvido por Gabriel Souza · Lato Sensu em Gestão de Projetos</div>',
             unsafe_allow_html=True)
