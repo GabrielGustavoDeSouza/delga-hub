@@ -64,32 +64,34 @@ section[data-testid="stSidebar"]{{display:none!important;}}
 .hub-sub{{text-align:center;color:rgba(255,255,255,.55);font-size:14px;
   margin-bottom:40px;}}
 
-.hero-card{{background:linear-gradient(120deg,{BLUE} 0%,{BLUE2} 100%);
-  border-radius:16px;padding:30px 40px;margin-bottom:36px;
+.hero-card{{display:block;text-decoration:none!important;margin-bottom:36px;}}
+.hero-inner{{background:linear-gradient(120deg,{BLUE} 0%,{BLUE2} 100%);
+  border-radius:16px;padding:30px 40px;
   box-shadow:0 20px 60px rgba(20,40,255,.35),0 2px 0 rgba(255,255,255,.08) inset;
-  display:flex;align-items:center;gap:24px;text-decoration:none!important;
+  display:flex;align-items:center;gap:24px;
   transition:transform .15s, box-shadow .15s;}}
-.hero-card:hover{{transform:translateY(-3px);
+.hero-card:hover .hero-inner{{transform:translateY(-3px);
   box-shadow:0 26px 70px rgba(20,40,255,.45),0 2px 0 rgba(255,255,255,.08) inset;}}
 .hero-icon{{font-size:44px;flex-shrink:0;
   background:rgba(255,255,255,.14);border-radius:14px;padding:16px 20px;}}
-.hero-name{{color:white;font-size:24px;font-weight:800;margin:0;}}
+.hero-name{{color:white;font-size:24px;font-weight:800;}}
 .hero-sub{{color:rgba(255,255,255,.75);font-size:13px;margin-top:4px;}}
 .hero-arrow{{margin-left:auto;color:white;font-size:26px;opacity:.7;flex-shrink:0;}}
 
 .grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}}
-.card{{background:rgba(40,60,190,.22);backdrop-filter:blur(14px);
+.card{{display:block;text-decoration:none!important;}}
+.card-inner{{background:rgba(40,60,190,.22);backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);border:1px solid rgba(90,120,255,.30);
-  border-radius:14px;padding:20px;text-decoration:none!important;
+  border-radius:14px;padding:20px;box-sizing:border-box;
   aspect-ratio:1/1;display:flex;flex-direction:column;gap:8px;
   transition:transform .15s, border-color .15s, background .15s;}}
-.card:hover{{transform:translateY(-3px);border-color:rgba(120,150,255,.55);
+.card:hover .card-inner{{transform:translateY(-3px);border-color:rgba(120,150,255,.55);
   background:rgba(50,72,210,.32);}}
-.card.disabled{{opacity:.55;cursor:default;}}
-.card.disabled:hover{{transform:none;border-color:rgba(90,120,255,.30);
+.card.disabled .card-inner{{opacity:.55;cursor:default;}}
+.card.disabled:hover .card-inner{{transform:none;border-color:rgba(90,120,255,.30);
   background:rgba(40,60,190,.22);}}
 .card-icon{{font-size:24px;}}
-.card-name{{color:white;font-size:14px;font-weight:700;margin:0;}}
+.card-name{{color:white;font-size:14px;font-weight:700;}}
 .card-sub{{color:rgba(255,255,255,.55);font-size:10.5px;line-height:1.4;flex:1;}}
 .card-badge{{align-self:flex-start;font-size:9px;font-weight:600;
   text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:8px;}}
@@ -137,10 +139,12 @@ def _card_html(item):
                  else '<span class="card-badge soon">Em breve</span>')
 
     return (f'<{tag} class="{classe}" {href}>'
+            f'<div class="card-inner">'
             f'<div class="card-icon">{item["icone"]}</div>'
             f'<div class="card-name">{item["nome"]}</div>'
             f'<div class="card-sub">{item["sub"]}</div>'
             f'{extra}'
+            f'</div>'
             f'</{tag}>')
 
 st.markdown(
@@ -151,9 +155,11 @@ st.markdown(
 
 st.markdown(
     f'<a class="hero-card" href="{PROJETOS["url"]}" target="_blank" rel="noopener noreferrer">'
+    f'<div class="hero-inner">'
     f'<div class="hero-icon">{PROJETOS["icone"]}</div>'
-    f'<div><p class="hero-name">{PROJETOS["nome"]}</p><p class="hero-sub">{PROJETOS["sub"]}</p></div>'
+    f'<div><div class="hero-name">{PROJETOS["nome"]}</div><div class="hero-sub">{PROJETOS["sub"]}</div></div>'
     f'<div class="hero-arrow">→</div>'
+    f'</div>'
     f'</a>',
     unsafe_allow_html=True)
 
